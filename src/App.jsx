@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Player from "./components/Player";
+import GameBoard from "./components/GameBoard";
 
 
 export default function App() {
@@ -11,7 +12,7 @@ export default function App() {
           <Player IntialName="Player 1" symbol="X" />
           <Player IntialName="Player 2" symbol="Y" />
         </ol>
-        Game board
+        <GameBoard />
       </div>
       LOG
     </main>
