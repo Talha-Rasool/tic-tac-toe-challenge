@@ -5,17 +5,19 @@ const intialBoardGame = [
   [null, null, null],
 ];
 
-export default function GameBoard() {
+export default function GameBoard({ onSelectPlayer , onActive }) {
     const[gameBoard,setGameBoard]=useState(intialBoardGame);
 
     function handleGameClick(rowInd,colInd){
         setGameBoard((prevGame)=>{
             const updatedBoard=[...prevGame.map((innerArr)=>[...innerArr])];
-            updatedBoard[rowInd][colInd]='X';
+            updatedBoard[rowInd][colInd]=onActive;
             
             return updatedBoard;
 
         })
+        onSelectPlayer();
+        
     }
    
   return (
