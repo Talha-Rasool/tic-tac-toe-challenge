@@ -1,3 +1,4 @@
+import { useState } from "react";
 const intialBoardGame = [
   [null, null, null],
   [null, null, null],
@@ -5,14 +6,26 @@ const intialBoardGame = [
 ];
 
 export default function GameBoard() {
+    const[gameBoard,setGameBoard]=useState(intialBoardGame);
+
+    function handleGameClick(rowInd,colInd){
+        setGameBoard((prevGame)=>{
+            const updatedBoard=[...prevGame.map((innerArr)=>[...innerArr])];
+            updatedBoard[rowInd][colInd]='X';
+            
+            return updatedBoard;
+
+        })
+    }
+   
   return (
     <ol id="game-board">
-      {intialBoardGame.map((row, rowInd) => (
+      {gameBoard.map((row, rowInd) => (
         <li key={rowInd}>
           <ol>
             {row.map((col, colInd) => (
               <li key={colInd}>
-                <button>{col}</button>
+                <button onClick={()=>handleGameClick(rowInd,colInd)}>{col}</button>
               </li>
             ))}
           </ol>
